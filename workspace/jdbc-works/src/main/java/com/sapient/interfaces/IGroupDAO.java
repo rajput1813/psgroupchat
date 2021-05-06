@@ -1,0 +1,17 @@
+package com.sapient.interfaces;
+
+import java.util.List;
+
+import com.sapient.entity.Group;
+
+
+public interface IGroupDAO {
+public boolean saveGroup(Group group); 
+	
+	// get message
+	public Group getGroup(int group_Id); 
+	
+	// get all messages
+	public List<Group> getAllGroups(); 
+
+}
