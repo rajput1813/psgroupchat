@@ -28,26 +28,26 @@ public class App {
 //		}
 		
 		
-//		Group g=new Group();
-//		g.setGroup_id(1);
-//		g.setCreated_at("12-04-2021");
-//		g.setUpdated_at("12-04-2022");
-//		g.setGroup_name("pod6");
-//		g.setCreated_by(2);
-//		g.setGroup_description("sleep well");
-//		IGroupDAO dao = new GroupDAO();
-//    //System.out.println(dao.saveGroup(g) ? "Created group success": "failed to create new group");
-//    //System.out.println(dao.getGroup(4));
+		Group g=new Group();
+		//g.setGroup_id(13);
+		g.setCreated_at("2021-05-07");
+		g.setUpdated_at("2021-05-08");
+		g.setGroup_name("pod10");
+		g.setCreated_by(4);
+		g.setGroup_description("god is great");
+		IGroupDAO dao = new GroupDAO();
+    System.out.println(dao.saveGroup(g) ? "Created group success": "failed to create new group");
+    //System.out.println(dao.getGroup(4));
 //    for(Group mm : dao.getAllGroups()) {
 //		System.out.println(mm);
 //	}
 
-		GroupUserRelation gu= new GroupUserRelation();
-		gu.setGroup_id(3);
-		gu.setUser_id(2);
-		gu.setIsAdmin(true);
-		GroupUserRelationDAO dao = new GroupUserRelationDAO();
-	System.out.println(dao.saveGroupUserRelation(gu) ? "Created groupuser success": "failed to create new groupuser");
+//		GroupUserRelation gu= new GroupUserRelation();
+//		gu.setGroup_id(3);
+//		gu.setUser_id(2);
+//		gu.setIsAdmin(true);
+//		GroupUserRelationDAO dao = new GroupUserRelationDAO();
+//	System.out.println(dao.saveGroupUserRelation(gu) ? "Created groupuser success": "failed to create new groupuser");
 	    //System.out.println(dao.getGroupUserRelation(1,2));
 //	    for(GroupUserRelation mm : dao.getAllGroupUserRelation()) {
 //		System.out.println(mm);

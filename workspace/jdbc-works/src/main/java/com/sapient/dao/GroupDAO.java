@@ -17,16 +17,16 @@ import com.sapient.utils.GetConnection;
 public class GroupDAO implements IGroupDAO {
  @Override
 	public boolean saveGroup(Group group) {
-		String sql = "Insert into group_details(group_name,Created_by,Group_description) values(?,?,?);";
+		String sql = "Insert into group_details(created_at,updated_at,group_name,Created_by,Group_description) values(?,?,?,?,?);";
 
 		try {
 			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
 			//ps.setInt(1, group.getGroup_id());
-			//ps.setString(2, group. getCreated_at());
-			//ps.setString(3, group.getUpdated_at());
-			ps.setString(1, group.getGroup_name());
-			ps.setInt(2, group.getCreated_by());
-			ps.setString(3, group.getGroup_description());
+			ps.setString(1, group. getCreated_at());
+			ps.setString(2, group.getUpdated_at());
+			ps.setString(3, group.getGroup_name());
+			ps.setInt(4, group.getCreated_by());
+			ps.setString(5, group.getGroup_description());
 
 			return ps.executeUpdate() > 0;
 		} catch (SQLException e) {
@@ -38,7 +38,7 @@ public class GroupDAO implements IGroupDAO {
  @Override
 	public Group getGroup(int gid) {
 
-		String sql = "select group_id,group_name,group_description" + " from group_details where group_id = ?";
+		String sql = "select group_id, created_at,updated_at,group_name,group_description" + " from group_details where group_id = ?";
 
 		try {
 			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
@@ -55,8 +55,10 @@ public class GroupDAO implements IGroupDAO {
 //				message.setIsAccepted(rs.getString(5));
 				Group g =  new Group();
         g.setGroup_id(rs.getInt(1));
-        g.setGroup_name(rs.getString(2));
-        g.setGroup_description(rs.getString(3));
+        g.setCreated_at(rs.getString(2));
+        g.setUpdated_at(rs.getString(3));
+        g.setGroup_name(rs.getString(4));
+        g.setGroup_description(rs.getString(4));
 
 				return g;
 			}

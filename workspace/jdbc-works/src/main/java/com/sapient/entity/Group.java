@@ -1,7 +1,10 @@
 package com.sapient.entity;
+
+import java.sql.Date;
+
 public class Group {
 	private int  group_id;
-	private  String  Created_at ; 
+	private  String Created_at ; 
 	private String  Updated_at; 
 	private String  group_name; 
 	private int  Created_by;
