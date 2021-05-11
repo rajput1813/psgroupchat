@@ -13,5 +13,8 @@ public boolean saveGroup(Group group);
 	
 	// get all messages
 	public List<Group> getAllGroups(); 
+	public Group deleteGroup(int group_Id);
+	public Group nameGroup(String  groupName,int groupId);
+	public Group changedescrption(String  groupdescrp,int groupId);
 
 }

@@ -12,5 +12,10 @@ public boolean saveGroupUserRelation (GroupUserRelation  groupUser);
 	
 	// get all messages
 	public List<GroupUserRelation > getAllGroupUserRelation (); 
+	//remove user
+	public GroupUserRelation removeUser (int groupId,int userId);
+	//exit user
+	public GroupUserRelation exitGroup (int groupId,int userId);
+	public GroupUserRelation GroupAdmin (boolean b,int groupId,int userId);
 
 }

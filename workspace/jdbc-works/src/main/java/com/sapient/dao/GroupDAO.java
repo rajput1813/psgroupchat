@@ -14,7 +14,7 @@ import com.sapient.interfaces.IGroupDAO;
 
 import com.sapient.utils.GetConnection;
 
-public class GroupDAO implements IGroupDAO {
+    public class GroupDAO implements IGroupDAO {
  @Override
 	public boolean saveGroup(Group group) {
 		String sql = "Insert into group_details(created_at,updated_at,group_name,Created_by,Group_description) values(?,?,?,?,?);";
@@ -91,8 +91,73 @@ public class GroupDAO implements IGroupDAO {
 
 		return list;
 	}
+ @Override
+  public Group deleteGroup (int group_Id) {
+  String sql = "delete from group_details where group_id = ?";
 
-	
+	try {
+		PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+		ps.setInt(1, group_Id);
+		// CTRL + 2 + L
+	int rs = ps.executeUpdate();
+		
+			if(rs>0)
+				System.out.println(" Successfully deleted group ");
+  
+		}
+	 catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
+	return null;
+}
+ @Override
+ public Group nameGroup(String  groupName,int groupId) {
+	 String sql = " update group_details set group_name=? where group_id= ?";
+
+		try {
+			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+			ps.setString (1, groupName);
+			ps.setInt(2, groupId);
+			// CTRL + 2 + L
+		int rs = ps.executeUpdate();
+			
+				if(rs>0)
+					System.out.println(" Successfully updated groupName ");
+	  
+			}
+		 catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 
+	 
+	 return null;
+}
+ public Group changedescrption (String  groupdescrp,int groupId) {
+	 String sql = " update group_details set group_description=? where group_id= ?";
+
+		try {
+			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+			ps.setString (1, groupdescrp);
+			ps.setInt(2, groupId);
+			// CTRL + 2 + L
+		int rs = ps.executeUpdate();
+			
+				if(rs>0)
+					System.out.println(" Successfully updated groupdescription ");
+	  
+			}
+		 catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 
+	 
+
+	 return null;
+ }
+ 
 }
 

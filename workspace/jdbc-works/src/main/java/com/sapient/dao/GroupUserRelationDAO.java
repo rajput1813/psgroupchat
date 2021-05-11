@@ -15,7 +15,7 @@ public class GroupUserRelationDAO implements IGroupUserRelationDAO {
 
 	@Override
 	public boolean saveGroupUserRelation(GroupUserRelation groupUser) {
-		String sql = "Insert into group_user_relation(group_id,user_id,is_admin) values(?,?,?);";
+		String sql = "Insert into group_user_relation(group_id,user_id,is_admin) values(?,?,?)";
 
 		try {
 			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
@@ -84,6 +84,67 @@ public class GroupUserRelationDAO implements IGroupUserRelationDAO {
 		}
 
 		return list;
+	}
+	@Override
+	public GroupUserRelation removeUser (int groupId,int userId) {
+		String sql = "delete from group_user_relation where group_id =? and user_id =?" ;
+
+		try {
+			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+			ps.setInt(1, groupId);
+			ps.setInt(2, userId);
+			
+			int rs = ps.executeUpdate() ;
+			if(rs>0) {
+				System.out.println("suceesfully exited the group");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public GroupUserRelation exitGroup (int groupId,int userId) {
+		String sql = "delete from group_user_relation where group_id =? and user_id =?" ;
+
+		try {
+			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+			ps.setInt(1, groupId);
+			ps.setInt(2, userId);
+			
+			int rs = ps.executeUpdate() ;
+			if(rs>0) {
+				System.out.println("suceesfully exited the group");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	@Override
+	public GroupUserRelation GroupAdmin (boolean  b,int groupId,int userId) {
+		String sql = "update group_user_relation  set is_admin=? where group_id =? and user_id =?" ;
+
+		try {
+			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+			ps.setBoolean(1, b);
+			ps.setInt(2, groupId);
+			ps.setInt(3, userId);
+			
+			int rs = ps.executeUpdate() ;
+			if(rs>0) {
+				System.out.println("suceesfully changed admin");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
